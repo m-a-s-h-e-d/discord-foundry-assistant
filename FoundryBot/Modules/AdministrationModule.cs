@@ -1,16 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Discord;
 using Discord.Commands;
 using Discord.WebSocket;
 using FoundryBot.Extensions;
-using Microsoft.CodeAnalysis;
-using Microsoft.CodeAnalysis.CSharp.Scripting;
-using Microsoft.CodeAnalysis.Scripting;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
@@ -25,15 +20,15 @@ namespace FoundryBot.Modules
         // User IDs for Player Numbers
         private readonly Dictionary<string, ulong> _users = new Dictionary<string, ulong>
         {
-            { "P1",         0 },
-            { "P2",         285106328790237195 },
-            { "P3",         0 },
-            { "P4",         0 },
-            { "P5",         0 },
-            { "P6",         0 },
-            { "P7",         0 },
-            { "P8",         0 },
-            { "P9",         353645411438821377 },
+            { "P1",         199384045996605441 },
+            { "P2",         186300210664833024 },
+            { "P3",         301921726030282762 },
+            { "P4",         505901959610630185 },
+            { "P5",         784633475579248652 },
+            { "P6",         99262920935899136 },
+            { "P7",         335884568265752576 },
+            { "P8",         131967746320629760 },
+            { "P9",         787587897070583829 },
             { "Gamemaster", 353645411438821377 },
             { "GM",         353645411438821377 }
         };
@@ -231,22 +226,5 @@ namespace FoundryBot.Modules
 
         private static LogLevel GetLogLevel(LogSeverity severity)
             => (LogLevel)Math.Abs((int)severity - 5);
-
-        public sealed class EvaluationEnvironment
-        {
-            public ICommandContext Context { get; }
-
-            public IUserMessage Message => this.Context.Message;
-            public IMessageChannel Channel => this.Context.Channel;
-            public IGuild Guild => this.Context.Guild;
-            public IUser User => this.Context.User;
-            public IGuildUser Member => this.Context.User as IGuildUser;
-            public IDiscordClient Client => this.Context.Client;
-
-            public EvaluationEnvironment(ICommandContext Context)
-            {
-                this.Context = Context;
-            }
-        }
     }
 }
